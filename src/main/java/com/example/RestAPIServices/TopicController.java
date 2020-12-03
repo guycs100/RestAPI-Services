@@ -1,18 +1,28 @@
 package com.example.RestAPIServices;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 public class TopicController {
+
+    Logger log = LoggerFactory.getLogger(TopicController.class);
 
     @Autowired
     private TopicService topicService;
 
     @RequestMapping("/topics")
-    public List<Topic> getAllTopics(){
+    public List<Topic> getAllTopics(HttpServletRequest request){
+        String RequestURI = request.getRequestURI();
+        String RemoteAddr = request.getRemoteAddr();
+        log.info("the RemoteAddr is : " + RemoteAddr);
+        log.info("the RequestURI is : " + RequestURI);
         return topicService.getAllTopics();
     }
 
