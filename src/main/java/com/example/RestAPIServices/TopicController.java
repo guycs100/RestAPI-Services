@@ -37,6 +37,11 @@ public class TopicController {
     public void addTopic(@RequestBody Topic topic){
         topicService.addTopic(topic);
     }
+    //example to get bodyrequest into map
+//    @RequestMapping(method = RequestMethod.POST,value = "/topics")
+//    public void addTopic(@RequestBody Map<String, String> json){
+//        log.info("The description is : " + json.get("description"));
+//    }
 
     @RequestMapping(method = RequestMethod.PUT,value = "/topics/{id}")
     public String updateTopic(@RequestBody Topic topic, @PathVariable String id){
