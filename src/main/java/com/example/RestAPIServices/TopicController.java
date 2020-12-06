@@ -16,14 +16,19 @@ public class TopicController {
 
     @Autowired
     private TopicService topicService;
+    @Autowired
+    private TopicRepository topicRepository;
+
 
     @RequestMapping("/topics")
-    public List<Topic> getAllTopics(HttpServletRequest request){
+    public Iterable<Topic> getAllTopics(HttpServletRequest request){
         String RequestURI = request.getRequestURI();
         String RemoteAddr = request.getRemoteAddr();
         log.info("the RemoteAddr is : " + RemoteAddr);
         log.info("the RequestURI is : " + RequestURI);
-        return topicService.getAllTopics();
+        log.info("userRepository.findAll() is : " + topicRepository.findAll().toString());
+        return topicRepository.findAll();
+//        return topicService.getAllTopics();
     }
 
 
@@ -35,6 +40,7 @@ public class TopicController {
 
     @RequestMapping(method = RequestMethod.POST,value = "/topics")
     public void addTopic(@RequestBody Topic topic){
+        topicRepository.save(topic);
         topicService.addTopic(topic);
     }
     //example to get bodyrequest into map

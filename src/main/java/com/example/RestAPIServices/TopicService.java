@@ -9,13 +9,13 @@ import java.util.List;
 @Service
 public class TopicService {
 
-    private List<Topic> topics = new ArrayList<>(
-            Arrays.asList(
-                    new Topic("Spring","Spring Framework","Spring Framework Description"),
-                    new Topic("Java","Core Java","Core Java Description"),
-                    new Topic("JavaScript","JavaScript","JavaScript Description")
-                    )
-    );
+    private List<Topic> topics = new ArrayList<>();
+//            Arrays.asList(
+//                    new Topic("Spring Framework","Spring Framework Description"),
+//                    new Topic("Core Java","Core Java Description"),
+//                    new Topic("JavaScript","JavaScript Description")
+//                    )
+//    );
 
     public List<Topic> getAllTopics() {
         return topics;
